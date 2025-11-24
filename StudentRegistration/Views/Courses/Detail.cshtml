@@ -1,0 +1,49 @@
+@using StudentRegistration.Shared.Models.API
+@model Course
+
+@{
+    ViewBag.Title = "Course List";
+}
+
+<h1>Course Detail</h1>
+<form asp-action="Save" method="post">
+    <table class="table table-bordered table-striped">
+
+        @{
+            Course course = Model;
+        }
+        <thead class="table-light">
+        <tr>
+            <th>Course ID #</th>
+            <th>Title</th>
+            <th>Credits</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <input hidden asp-for="COURSE_ID" value="@Model.COURSE_ID" />
+            </td>
+
+            <td>
+                <input asp-for="TITLE" class="form-control" value="@Model.TITLE"  required/>
+                <span asp-validation-for="TITLE" class="text-danger"></span>
+
+            </td>
+         
+            <td>
+                <input asp-for="CREDITS" class="form-control" name="CREDITS" value="@Model.CREDITS"  required/>
+                <span asp-validation-for="CREDITS" class="text-danger"></span>
+
+            </td>
+            <td>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a asp-controller="Courses" asp-action="Index" class="btn btn-primary">Go Back</a>
+</form>
+
+

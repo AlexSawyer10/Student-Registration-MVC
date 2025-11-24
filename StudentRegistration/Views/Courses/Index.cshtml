@@ -1,0 +1,77 @@
+@using StudentRegistration.Shared.Models.API
+@model List<StudentRegistration.Shared.Models.API.Course>
+@{
+    ViewData["Title"] = "Courses";
+}
+
+<h2>Courses</h2>
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+
+<table class="table table-striped table-bordered align-middle">
+    <thead class="table-light">
+    <tr>
+        <th>Course ID</th>
+        <th>Title</th>
+        <th>Credits</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    @for (int i = 0; i < Model.Count; ++i)
+    {
+        String formId = $"course-form_{i}";
+        Course course = Model[i];
+
+        <tr>
+            <td>
+                <input type="hidden" name="COURSE_ID" value="@course.COURSE_ID" form="@formId"/> @*Course ID here*@
+            </td>
+            <td>
+                @course.TITLE
+            </td>
+            <td>
+                @course.CREDITS
+            </td>
+            
+            
+
+            <td class="d-flex justify-content-end gap-2">
+
+                <a asp-controller="Courses"
+                   asp-action="Detail"
+                   asp-route-courseId="@course.COURSE_ID">
+                    Edit
+                </a>
+                
+                <form asp-action="Delete" asp-controller="Courses" method="post">
+                    <input type="hidden" name="courseId" value="@course.COURSE_ID"/>
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+
+    <tr>
+        <td>
+            <span class="text-muted">Auto</span>
+
+        <td>
+            <input class="form-control" name="TITLE" form="create-course-form" required/> 
+        </td>
+        <td>
+            <input class="form-control" name="CREDITS" form="create-course-form" type="number" required /> 
+        </td>
+        <td class="text-end">
+            <form id="create-course-form" asp-action="CreateCourse" asp-controller="Courses" method="post">
+                <button type="submit" class="btn btn-sm btn-success">Create</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+

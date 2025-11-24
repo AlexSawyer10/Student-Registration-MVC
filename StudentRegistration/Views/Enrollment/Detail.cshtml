@@ -1,0 +1,53 @@
+@using StudentRegistration.Shared.Models.API
+@model Enrollment
+
+@{
+    ViewBag.Title = "Enrollment List";
+}
+
+<h1>Enrollment Detail</h1>
+<form asp-action="Save" method="post">
+    <table class="table table-bordered table-striped">
+
+        @{
+            Enrollment enrollment = Model;
+        }
+        <thead class="table-light">
+        <tr>
+            <th>Enrollment ID #</th>
+            <th>Student ID #</th>
+            <th>Course ID</th>
+            <th>Grade</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <input  hidden asp-for="ENROLLMENT_ID" name="ENROLLMENT_ID" value="@Model.ENROLLMENT_ID" />
+            </td>
+
+            <td>
+                <input asp-for="STUDENT_ID" class="form-control" name="STUDENT_ID" value="@Model.STUDENT_ID"  required/>
+                <span asp-validation-for="STUDENT_ID" class="text-danger"></span>
+            </td>
+
+            <td>
+                <input asp-for="COURSE_ID" class="form-control" name="COURSE_ID" value="@Model.COURSE_ID"  required/>
+                <span asp-validation-for="COURSE_ID" class="text-danger"></span>
+
+            </td>
+            <td>
+                <input asp-for="GRADE" class="form-control" type="number" step="0.1" name="GRADE" value="@Model.GRADE" required/>
+                <span asp-validation-for="GRADE" class="text-danger"></span>
+            </td>
+            <td>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a asp-controller="Enrollment" asp-action="Index" class="btn btn-primary">Go Back</a>
+</form>
+
+

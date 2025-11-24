@@ -1,0 +1,100 @@
+@using StudentRegistration.Shared.Models.API
+@model List<StudentRegistration.Shared.Models.API.Student>
+
+@{
+    ViewData["Title"] = "Students";
+}
+<h2>Students</h2>
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+
+<table class="table table-striped table-bordered align-middle">
+    <thead class="table-light">
+    <tr>
+        <th>Student ID #</th>
+        <th>First Name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Date Of Birth</th>
+        <th>Major</th>
+    </tr>
+    </thead>
+    <tbody>
+    @for (int i = 0; i < Model.Count; ++i)
+    {
+        String formId = $"student-form_{i}";
+        Student student = Model[i];
+
+        <tr>
+            <td>
+                <input type="hidden" name="STUDENT_ID" value="@student.STUDENT_ID" form="@formId"/> @*Student ID here*@
+            </td>
+            <td>
+                @student.FIRST_NAME
+            <td>
+                @student.LAST_NAME
+            </td>
+            <td>
+                @student.EMAIL
+            </td>
+            <td>
+                @student.PHONE_NUMBER
+            </td>
+            <td>
+                @student.DATE_OF_BIRTH
+            </td>
+            <td>
+                @student.MAJOR 
+            </td>
+
+            <td class="d-flex justify-content-end gap-2">
+
+                <a asp-controller="Student"
+                   asp-action="Detail"
+                   asp-route-studentId="@student.STUDENT_ID">
+                    Edit
+                </a>
+               
+
+                <form asp-action="Delete" asp-controller="Student" method="post">
+                    <input type="hidden" name="studentId" value="@student.STUDENT_ID"/>
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+
+    <tr>
+        <td>
+            <span class="text-muted">Auto</span>
+        <td>
+            <input class="form-control" placeholder="First Name" name="FIRST_NAME" form="create-student-form" required/> @*Student First name here*@
+        </td>
+        <td>
+            <input class="form-control"  placeholder="Last Name" name="LAST_NAME" form="create-student-form" required/> @*Student Last name here*@
+        </td>
+        <td>
+            <input class="form-control"  placeholder="example123@gmail.com" name="EMAIL" maxlength="50" minlength="4" form="create-student-form" required/> @*Student Email here*@
+        </td>
+        <td>
+            <input class="form-control" name="PHONE_NUMBER" placeholder="###-###-####"  form="create-student-form"/> @*Student Phone here REMEMBER NOT TYPE NUMBER ITS A VARCHAR*@
+        </td>
+        <td>
+            <input type="date" class="form-control"  placeholder="yyyy-MM-dd" name="DATE_OF_BIRTH" form="create-student-form"/> @*Student Date Of Birth Here*@
+        </td>
+        <td>
+            <input class="form-control" placeholder="ex: Computer Science" name="MAJOR"  form="create-student-form"/> @*Student Major here*@
+        </td>
+        <td class="text-end">
+            <form id="create-student-form" asp-action="CreateStudent" asp-controller="Student" method="post">
+                <button type="submit" class="btn btn-sm btn-success">Create</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>

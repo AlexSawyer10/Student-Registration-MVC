@@ -1,0 +1,70 @@
+@using StudentRegistration.Shared.Models.API
+@model Student
+
+@{
+    ViewBag.Title = "Student List";
+}
+@*
+https://medium.com/@MJQuinn/asp-net-mvc-form-validation-d5473229f138 REFER FOR ASP VALIDATION
+*@
+<h1>Student Detail</h1>
+<form asp-action="Save" method="post">
+    <table class="table table-bordered table-striped">
+
+        @{
+            Student student = Model;
+        }
+        <thead class="table-light">
+        <tr>
+            <th>Student ID #</th>
+            <th>First Name</th>
+            <th>Last name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Date Of Birth</th>
+            <th>Major</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <input  hidden asp-for="STUDENT_ID" value="@Model.STUDENT_ID" />
+            </td>
+
+            <td>
+                <input asp-for="FIRST_NAME"class="form-control" value="@Model.FIRST_NAME"  required/>
+                <span asp-validation-for="FIRST_NAME" class="text-danger"></span>
+            </td>
+         
+            <td>
+                <input asp-for="LAST_NAME" class="form-control" name="LAST_NAME" value="@Model.LAST_NAME"  required/>
+                <span asp-validation-for="LAST_NAME" class="text-danger"></span>
+            </td>
+            <td>
+                <input asp-for="EMAIL" class="form-control" name="EMAIL" value="@Model.EMAIL" required/>
+                <span asp-validation-for="EMAIL" class="text-danger"></span>
+            </td>
+            <td>
+                <input asp-for="PHONE_NUMBER"  class="form-control" name="PHONE_NUMBER" value="@Model.PHONE_NUMBER" required/>  @*Phone number is a var char so I shouldn't have to to string it*@
+                <span asp-validation-for="PHONE_NUMBER" class="text-danger"></span>
+            </td>
+            <td>
+                <input asp-for="DATE_OF_BIRTH" class="form-control" name="DATE_OF_BIRTH" value="@Model.DATE_OF_BIRTH.ToString("yyyy-MM-dd")" required/>  @*To string it because it must be displayed as a strin, not date data type*@
+                <span asp-validation-for="DATE_OF_BIRTH" class="text-danger"></span>
+               
+            </td>
+            <td>
+                <input asp-for="MAJOR" class="form-control" name="MAJOR" value="@Model.MAJOR" required/> @*Student major is here*@
+                <span asp-validation-for="MAJOR" class="text-danger"></span>
+            </td>
+            <td>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a asp-controller="Student" asp-action="Index" class="btn btn-primary">Go Back</a>
+</form>
+
+
