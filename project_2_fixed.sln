@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentRegistration", "StudentRegistration\StudentRegistration.csproj", "{737EDF22-A05B-48ED-8C7B-5D1563135D77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentRegistration.API", "StudentRegistration.API\StudentRegistration.API.csproj", "{953A9D84-07DD-415D-A7D8-CC7D6B41443C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentRegistration.Shared", "StudentRegistration.Shared\StudentRegistration.Shared.csproj", "{EA11D673-7D2E-4757-AD95-4B115F067F31}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{737EDF22-A05B-48ED-8C7B-5D1563135D77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{737EDF22-A05B-48ED-8C7B-5D1563135D77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{737EDF22-A05B-48ED-8C7B-5D1563135D77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{737EDF22-A05B-48ED-8C7B-5D1563135D77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{953A9D84-07DD-415D-A7D8-CC7D6B41443C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{953A9D84-07DD-415D-A7D8-CC7D6B41443C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{953A9D84-07DD-415D-A7D8-CC7D6B41443C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{953A9D84-07DD-415D-A7D8-CC7D6B41443C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA11D673-7D2E-4757-AD95-4B115F067F31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA11D673-7D2E-4757-AD95-4B115F067F31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA11D673-7D2E-4757-AD95-4B115F067F31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA11D673-7D2E-4757-AD95-4B115F067F31}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
